@@ -1,0 +1,5 @@
+
+
+class BaseController<T, TSearch> {
+    
+}
