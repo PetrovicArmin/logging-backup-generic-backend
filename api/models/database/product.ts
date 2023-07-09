@@ -1,6 +1,12 @@
-import { DataTypes, Model } from 'sequelize';
 import sequelizeConnection from './../config.js';
 import { IProductInsertRequest } from '../request/productInsertRequest.js';
+import { Sku } from './sku.js';
+import { 
+    DataTypes, 
+    Model,
+    HasManyGetAssociationsMixin,
+    HasManyCountAssociationsMixin
+} from 'sequelize';
 
 export interface IProductDB {
     id: number;
@@ -20,6 +26,9 @@ export class Product extends Model<IProductDB, IProductInsertRequest> implements
     declare type: string;
     declare readonly createdAt: Date;
     declare readonly updatedAt: Date;
+
+    declare getSkus: HasManyGetAssociationsMixin<Sku>;
+    declare countSkus: HasManyCountAssociationsMixin;  
 };
 
 Product.init({
@@ -58,4 +67,8 @@ Product.init({
         defaultValue: new Date(),
         field: 'created_at'
       }    
-}, { sequelize: sequelizeConnection });
+}, { sequelize: sequelizeConnection, tableName: 'Product' });
+
+//if this makes problems, then add mixins alone.
+Product.hasMany(Sku, { foreignKey: 'productId' });
+Sku.belongsTo(Product);

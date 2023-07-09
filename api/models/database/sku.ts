@@ -1,6 +1,11 @@
-import { DataTypes, Model } from "sequelize";
 import sequelizeConnection from "../config.js";
 import { ISkuInsertRequest } from "../request/skuInsertRequest.js";
+import { 
+    BelongsToGetAssociationMixin,
+    DataTypes, 
+    Model 
+} from "sequelize";
+import { Product } from "./product.js";
 
 export interface ISkuDB {
     id: number;
@@ -26,6 +31,8 @@ export class Sku extends Model<ISkuDB, ISkuInsertRequest> implements ISkuDB {
     declare quantityInStock: number;
     declare readonly createdAt: Date;
     declare readonly updatedAt: Date;
+
+    declare getProduct: BelongsToGetAssociationMixin<Product>
 };
 
 Sku.init({
@@ -99,4 +106,4 @@ Sku.init({
         defaultValue: new Date(),
         field: 'created_at'
       }
-}, { sequelize: sequelizeConnection });
+}, { sequelize: sequelizeConnection, tableName: 'Sku' });

@@ -40,6 +40,10 @@ export default {
             validate: {
               isInt: true
             },
+            references: {
+              model: 'Product',
+              key: 'id'
+            },
             field: 'product_id'
           },
           countryOfOrigin: {
