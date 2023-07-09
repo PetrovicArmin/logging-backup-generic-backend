@@ -1,7 +1,5 @@
-import { Model } from "sequelize";
-import { BaseService, IService } from "./baseService";
-import { ModelType } from "../models/helperTypes";
-import map from "../models/mapper";
+import { BaseService, IService } from "./baseService.js";
+import map from "../models/mapper.js";
 
 
 export interface ICRUDService<TDto, TSearch, TInsert, TUpdate> extends IService<TDto, TSearch>{

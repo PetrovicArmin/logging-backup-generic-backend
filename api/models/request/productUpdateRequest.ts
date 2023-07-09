@@ -6,7 +6,7 @@ export interface IProductUpdateRequest {
     updatedAt?: Date;
 };
 
-export const productUpdateRequest = [
+export const productUpdateRequestProperties = [
     "name",
     "summary",
     "details",

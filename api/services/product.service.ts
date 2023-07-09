@@ -11,7 +11,7 @@ export interface IProductService extends ICRUDService<IProductDto, IProductSearc
 };
 
 
-class ProductService extends BaseCRUDService<IProductDto, IProductSearchObject, IProductInsertRequest, IProductUpdateRequest> {
+export class ProductService extends BaseCRUDService<IProductDto, IProductSearchObject, IProductInsertRequest, IProductUpdateRequest> implements IProductService{
     constructor() {
         super(Product, productDtoProperties);
     }

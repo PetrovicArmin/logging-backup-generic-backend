@@ -1,6 +1,4 @@
-import { Model } from "sequelize";
-import map from "../models/mapper";
-import { ModelType } from "../models/helperTypes";
+import map from "../models/mapper.js";
 
 export interface IService<TDto, TSearch> {
     get: (obj: TSearch) => Promise<TDto[]>;
@@ -8,13 +6,15 @@ export interface IService<TDto, TSearch> {
 };
 
 export class BaseService<TDto, TSearch> implements IService<TDto, TSearch> {
+    protected model: any;
+
     constructor(
-        protected model: any,
+        model: any,
         protected dtoParameters: string[]
-    ) {}
+    ) { this.model = model; }
 
     async get(obj: TSearch): Promise<TDto[]> {
-       return (await this.model.findAll({ where: obj as any })).map(value => map(value, this.dtoParameters));
+       return (await this.model.findAll({ where: obj as any })).map((value: any) => map(value, this.dtoParameters));
     }
 
     async getById(id: number): Promise<TDto> {
