@@ -20,6 +20,8 @@ export interface ISkuDB {
     updatedAt: Date;
 };
 
+export const skuDBProperties: string[] = ['id', 'weight', 'color', 'skuCode', 'productId', 'countryOfOrigin', 'price', 'quantityInStock', 'createdAt', 'updatedAt'];
+
 export class Sku extends Model<ISkuDB, ISkuInsertRequest> implements ISkuDB {
     declare id: number;
     declare weight?: number;

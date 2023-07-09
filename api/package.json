@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rimraf ./build && npx tsc -p ./tsconfig.api.json && npx tsc -p ./tsconfig.db.json",
     "start": "node build/server.js",
-    "dev": "concurrently \"npx tsc -p ./tsconfig.api.json --watch\" \"npx tsc -p ./tsconfig.db.json\" \"nodemon -q build/server.js\""
+    "dev": "concurrently \" npx tsc -p ./tsconfig.api.json --watch\" \"nodemon -q build/server.js\""
   },
   "author": "",
   "license": "ISC",

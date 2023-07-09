@@ -5,3 +5,11 @@ export interface IProductDto {
     details?: string;
     type: string;
 };
+
+export const productDtoProperties = [
+    "id",
+    "name",
+    "summary",
+    "details",
+    "type"
+];

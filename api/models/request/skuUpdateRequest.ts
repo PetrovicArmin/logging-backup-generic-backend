@@ -1,4 +1,4 @@
-export default interface ISkuUpdateRequest {
+export interface ISkuUpdateRequest {
     weight?: number;
     color?: string;
     countryOfOrigin?: string;
@@ -7,3 +7,13 @@ export default interface ISkuUpdateRequest {
     quantityInStock?: number;
     updatedAt?: Date;
 };
+
+export const skuUpdateRequestProperties = [
+    "weight",
+    "color",
+    "countryOfOrigin",
+    "productId",
+    "price",
+    "quantityInStock",
+    "updatedAt"
+]

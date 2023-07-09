@@ -5,3 +5,11 @@ export interface IProductUpdateRequest {
     type?: string;
     updatedAt?: Date;
 };
+
+export const productUpdateRequest = [
+    "name",
+    "summary",
+    "details",
+    "type",
+    "updatedAt"
+];

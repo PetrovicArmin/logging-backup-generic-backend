@@ -7,3 +7,13 @@ export interface ISkuInsertRequest {
     price: number;
     quantityInStock: number;
 };
+
+export const skuInsertRequestProperties = [
+    "weight",
+    "color",
+    "skuCode",
+    "productId",
+    "countryOfOrigin",
+    "price",
+    "quantityInStock"
+]

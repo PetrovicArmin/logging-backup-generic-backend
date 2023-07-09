@@ -18,6 +18,16 @@ export interface IProductDB {
     updatedAt: Date;
 };
 
+export const productDBProperties = [
+  "id",
+  "name",
+  "summary",
+  "details",
+  "type",
+  "createdAt",
+  "updatedAt"
+];
+
 export class Product extends Model<IProductDB, IProductInsertRequest> implements IProductDB {
     declare id: number;
     declare name: string;
@@ -70,5 +80,8 @@ Product.init({
 }, { sequelize: sequelizeConnection, tableName: 'Product' });
 
 //if this makes problems, then add mixins alone.
-Product.hasMany(Sku, { foreignKey: 'productId' });
+Product.hasMany(Sku, { foreignKey: {
+  name: 'productId',
+  field: 'product_id'
+} });
 Sku.belongsTo(Product);

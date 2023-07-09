@@ -1,4 +1,4 @@
-export default interface ISkuDto {
+export interface ISkuDto {
     id: number;
     weight?: number;
     color?: string;
@@ -8,3 +8,14 @@ export default interface ISkuDto {
     price: number;
     quantityInStock: number;
 };
+
+export const skuDtoProperties = [
+    "id",
+    "weight",
+    "color",
+    "skuCode",
+    "productId",
+    "countryOfOrigin",
+    "price",
+    "quantityInStock"
+]

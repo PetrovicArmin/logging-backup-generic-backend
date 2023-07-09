@@ -4,3 +4,10 @@ export interface IProductInsertRequest {
     details?: string; 
     type: string;
 };
+
+export const productInsertRequestProperties = [
+    "name",
+    "summary",
+    "details",
+    "type"
+];
