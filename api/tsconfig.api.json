@@ -12,6 +12,8 @@
       /* Type Checking */
       "strict": true,                                      /* Enable all strict type-checking options. */
       "skipLibCheck": true,      
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
       "plugins": [
         { "transform": "ts-transformer-keys/transformer" }
       ]                           /* Skip type checking all .d.ts files. */
