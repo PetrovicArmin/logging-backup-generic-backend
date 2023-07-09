@@ -6,14 +6,14 @@ export default {
       try {
         await queryInterface.bulkInsert('Product', [
           {
-            id: 1,
+            id: 10000,
             name: 'basketball',
             summary: 'This is ball for playing basket',
             details: 'This is detailed description of basketball object',
             type: 'SPORTS'
           },
           {
-            id: 2,
+            id: 10001,
             name: 'chicken',
             summary: 'This is food',
             details: 'This is detailed description of chicken foods',
@@ -27,5 +27,5 @@ export default {
       }
     },
 
-    down: (queryInterface: QueryInterface): Promise<void> => queryInterface.bulkDelete('Product', { id: { [Op.in]: [1, 2] } }) as Promise<any>
+    down: (queryInterface: QueryInterface): Promise<void> => queryInterface.bulkDelete('Product', { id: { [Op.in]: [10000, 10001] } }) as Promise<any>
 };

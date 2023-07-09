@@ -14,7 +14,7 @@ export default {
             type: DataTypes.DOUBLE,
             validate: {
               isNumeric: true,
-              isIn: [0.1, 10000] as any[]
+              min: 0
             }
           },
           color: {
@@ -55,7 +55,7 @@ export default {
             allowNull: false,
             validate: {
               isNumeric: true,
-              isIn: [0.1, 10000] as any[]
+              min: 0
             }
           },
           quantityInStock: {
@@ -63,7 +63,7 @@ export default {
             allowNull: false,
             validate: {
               isInt: true,
-              isin: [0, 10000] as any[]
+              min: 0
             },
             field: 'quantity_in_stock'
           },

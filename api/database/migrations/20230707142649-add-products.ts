@@ -26,7 +26,7 @@ export default {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-              isIn: Object.values(ProductType) as any[]
+              isIn: [Object.values(ProductType)]
             }
           },
           updatedAt: {

@@ -62,7 +62,7 @@ Product.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isIn: ["SPORTS","SCIENCE","MOVIES","MUSIC","ENTERTAINMENT","OTHER"] as any[]
+          isIn: [["SPORTS","SCIENCE","MOVIES","MUSIC","ENTERTAINMENT","OTHER"]]
         }
       },
       updatedAt: {
@@ -80,8 +80,8 @@ Product.init({
 }, { sequelize: sequelizeConnection, tableName: 'Product' });
 
 //if this makes problems, then add mixins alone.
-Product.hasMany(Sku, { foreignKey: {
-  name: 'productId',
-  field: 'product_id'
-} });
-Sku.belongsTo(Product);
+//THIS BELOW IS USED FOR MIXINS BUT MAKES A MESS WITH FOREIGN KEY COLUMN!
+// Product.hasMany(Sku, { foreignKey: {
+//   name: 'product_id'
+// } });
+// Sku.belongsTo(Product);

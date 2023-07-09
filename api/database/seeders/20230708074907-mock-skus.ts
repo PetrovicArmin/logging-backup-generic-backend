@@ -9,7 +9,7 @@ export default {
             sku_code: '11111111',
             weight: 2.3,
             color: 'yellow',
-            product_id: 1,
+            product_id: 10000,
             country_of_origin: 'USA',
             price: 20.0,
             quantity_in_stock: 10
@@ -18,7 +18,7 @@ export default {
             sku_code: '22222222',
             weight: 2.3,
             color: 'red',
-            product_id: 1,
+            product_id: 10000,
             country_of_origin: 'BA',
             price: 15.0,
             quantity_in_stock: 100
@@ -27,7 +27,7 @@ export default {
             sku_code: '33333333',
             weight: 2.3,
             color: 'black',
-            product_id: 2,
+            product_id: 10001,
             country_of_origin: 'CHINA',
             price: 2.0,
             quantity_in_stock: 24
@@ -36,7 +36,7 @@ export default {
             sku_code: '44444444',
             weight: 2.3,
             color: 'purple',
-            product_id: 2,
+            product_id: 10001,
             country_of_origin: 'TANZANIA',
             price: 2.0,
             quantity_in_stock: 100
