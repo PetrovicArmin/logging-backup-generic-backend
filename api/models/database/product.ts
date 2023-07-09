@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelizeConnection from './../config';
-import { IProductInsertRequest } from '../request/productInsertRequest';
+import sequelizeConnection from './../config.js';
+import { IProductInsertRequest } from '../request/productInsertRequest.js';
 
 export interface IProductDB {
     id: number;
