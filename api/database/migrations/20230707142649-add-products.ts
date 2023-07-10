@@ -1,5 +1,5 @@
 import { QueryInterface, DataTypes, Transaction } from 'sequelize';
-import ProductType from '../enums/productType.js';
+import ProductType from '../../models/enums/productType.js';
 
 export default {
     up: async (queryInterface: QueryInterface): Promise<void> => {

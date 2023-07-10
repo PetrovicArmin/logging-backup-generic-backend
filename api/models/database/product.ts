@@ -7,6 +7,7 @@ import {
     HasManyGetAssociationsMixin,
     HasManyCountAssociationsMixin
 } from 'sequelize';
+import ProductType from '../enums/productType.js';
 
 export interface IProductDB {
     id: number;
@@ -62,7 +63,7 @@ Product.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isIn: [["SPORTS","SCIENCE","MOVIES","MUSIC","ENTERTAINMENT","OTHER"]]
+          isIn: [Object.values(ProductType)]
         }
       },
       updatedAt: {
