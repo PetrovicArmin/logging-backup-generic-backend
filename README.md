@@ -42,7 +42,7 @@ all of the files extensions inside ./database folder to .cjs. In powershell, you
 ```
 Dir -Recurse ./build/database/*.js | rename-item -newname { [io.path]::ChangeExtension($_.name, "cjs") }
 ```
-Easiest way is to open new powershell in vSCode, and paste code below. For different shells, you will need to manage this problem by yourself.
+Easiest way is to open new powershell in VSCode, and paste code below. For different shells, you will need to manage this problem by yourself.
 
 If this is your first time setting up database, then you need to run **migrations** in order to create database schema. Do that with *sequelize-cli* with
 ```
@@ -54,7 +54,7 @@ Also, if you want to add dummy data (**seed**) into the database, you need to ru
 npx sequelize-cli db:seed:all
 ```
 
-In case you want to revert these commands, you can check how to do it in ![migration section of sequelize library](https://sequelize.org/docs/v6/other-topics/migrations/)
+In case you want to revert these commands, you can check how to do it in [migration section of sequelize library](https://sequelize.org/docs/v6/other-topics/migrations/)
 
 Now, in order to develop this backend further, you can start it by running:
 ```
@@ -233,7 +233,7 @@ You can see other classes and interfaces in codebase.
 Besided generic API, other important parts of the project are:
 * Migration based database versioning - used for adding dummy data (seeds), or adding indexes / columns to database in production, without distorting already inserted data.
 * Logging of errors and api calls - LOGS_PATH environment variable decides where are these log files going to be stored. These two enables us to have better understanding of
-  exceptions when they occur in production, and they help us analyze efficiency and performance of our backend (api.log)
+  exceptions when they occur in production (errors.log), and they help us analyze efficiency and performance of our backend (api.log)
 * Automated database backup - we used cron jobs in order to backup database to host machine. Exact folder is defined by BACKUP_PATH in main.env file. These backups are
   going to happen every day at 23:59 o'clock. They are very useful in order to search database products, to see on which day were they most popular, unpopular, etc. etc.
 
