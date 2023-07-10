@@ -9,9 +9,12 @@ import { ProductController } from "./controllers/applied/product.controller.js";
 import { SkuController } from "./controllers/applied/sku.controller.js";
 import winston from 'winston';
 import expressWinston from 'express-winston';
+import dotenv from 'dotenv';
 
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
+
+dotenv.config({path: path.join(__dirname, '..', '..', 'main.env')});
 
 //initialize ORM model
 await dbInit();
@@ -26,9 +29,15 @@ app.use(bodyParser.json())
 expressWinston.requestWhitelist.push('body'); //be careful of this data!
 expressWinston.responseWhitelist.push('body');
 
+if (!process.env.LOGS_PATH)
+  throw Error('LOGS_PATH environment variable not defined!');
+
+if (!process.env.BACKUP_PATH)
+  throw Error('BACKUP_PATH environment variable not defined!');
+
 app.use(expressWinston.logger({
   transports: [
-    new winston.transports.File({ filename: "api.log", dirname: path.join(__dirname, '..', 'logs') })
+    new winston.transports.File({ filename: "api.log", dirname: path.join(process.env.LOGS_PATH, 'api.log') })
   ],
   format: winston.format.combine(
     winston.format.colorize(),
@@ -50,7 +59,7 @@ app.use('/skus', skuController.getRouter());
 //error logger
 app.use(expressWinston.errorLogger({
   transports: [
-    new winston.transports.File({ filename: 'errors.log', dirname: path.join(__dirname, '..', 'logs') })
+    new winston.transports.File({ filename: 'errors.log', dirname: path.join(process.env.LOGS_PATH, 'errors.log') })
   ],
   format: winston.format.combine(
     winston.format.colorize(),
