@@ -10,14 +10,31 @@ import { SkuController } from "./controllers/applied/sku.controller.js";
 import winston from 'winston';
 import expressWinston from 'express-winston';
 import dotenv from 'dotenv';
+import { CronJob } from 'cron';
+import backupDatabase from "./backup/backup.js";
 
 const __filename: string = fileURLToPath(import.meta.url);
 const __dirname: string = path.dirname(__filename);
 
 dotenv.config({path: path.join(__dirname, '..', '..', 'main.env')});
 
+if (!process.env.LOGS_PATH)
+  throw Error('LOGS_PATH environment variable not defined!');
+
+if (!process.env.BACKUP_PATH)
+  throw Error('BACKUP_PATH environment variable not defined!');
+
 //initialize ORM model
 await dbInit();
+
+const job: CronJob = new CronJob('59 23 * * *',
+  function () {
+    console.log('-------Running cron job-------');
+    backupDatabase(process);
+  },
+  null,
+  true
+)
 
 const app: Express = express();
 
@@ -28,12 +45,6 @@ app.use(bodyParser.json())
 //api logger
 expressWinston.requestWhitelist.push('body'); //be careful of this data!
 expressWinston.responseWhitelist.push('body');
-
-if (!process.env.LOGS_PATH)
-  throw Error('LOGS_PATH environment variable not defined!');
-
-if (!process.env.BACKUP_PATH)
-  throw Error('BACKUP_PATH environment variable not defined!');
 
 app.use(expressWinston.logger({
   transports: [
