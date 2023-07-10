@@ -1,5 +1,13 @@
 import { QueryInterface, DataTypes, Transaction } from 'sequelize';
-import ProductType from '../../models/enums/productType.js';
+
+enum ProductType {
+  SPORTS="SPORTS",
+  SCIENCE="SCIENCE",
+  MOVIES="MOVIES",
+  MUSIC="MUSIC",
+  ENTERTAINMENT="ENTERTAINMENT",
+  OTHER="OTHER"
+};
 
 export default {
     up: async (queryInterface: QueryInterface): Promise<void> => {

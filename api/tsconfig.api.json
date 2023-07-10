@@ -14,10 +14,7 @@
       "skipLibCheck": true,      
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "strictPropertyInitialization": false,
-      "plugins": [
-        { "transform": "ts-transformer-keys/transformer" }
-      ]                           /* Skip type checking all .d.ts files. */
+      "strictPropertyInitialization": false                          /* Skip type checking all .d.ts files. */
     },
     "exclude": [
       "./database/**/*"
